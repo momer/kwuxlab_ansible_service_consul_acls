@@ -10,7 +10,7 @@
     - version.yml
   vars:
     consul_agent_token_name: "{{ ansible_facts['nodename'] }} agent token"
-    local_vault_addr: "http://active.vault.service.{{ local_vault_primary_datacenter }}.consul:8200"
+    target_vault_addr: "http://active.vault.service.{{ target_vault_primary_datacenter }}.consul:8200"
 
   tags:
     - kwuxlab_ansible_service_consul
@@ -109,7 +109,7 @@
             kv-v1/consul/agent/acl-token/{{ ansible_facts['nodename'] }}
             @{{ tmp_token_file.path }}
           environment:
-            VAULT_ADDR: "{{ local_vault_addr }}"
+            VAULT_ADDR: "{{ target_vault_addr }}"
             VAULT_TOKEN: "{{ vault_master_token }}"
 
         - name: Delete temporary token file
@@ -130,7 +130,7 @@
             grep SecretID |
             awk '{ print $2 }'
           environment:
-            VAULT_ADDR: "{{ local_vault_addr }}"
+            VAULT_ADDR: "{{ target_vault_addr }}"
             VAULT_TOKEN: "{{ vault_master_token }}"
           register: node_agent_token_secret
           no_log: true

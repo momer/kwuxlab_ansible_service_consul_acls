@@ -6,6 +6,6 @@ consul_master_key: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 # Consul ACLs.
 vault_master_token: "s.xxxxxxxxxxxxxxxxxxxxx"
 
-# A `local_`-namespaced variable (to avoid conflicts), with the value of the
+# A `target_`-namespaced variable (to avoid conflicts), with the value of the
 # primary vault datacenter, for access via Consul-configured DNS.
-local_vault_primary_datacenter: global
+target_vault_primary_datacenter: global
