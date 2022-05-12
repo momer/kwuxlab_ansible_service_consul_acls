@@ -1,4 +1,7 @@
 ---
+# Default host path to store local facts
+ansible_local_facts_dir: "{{ ansible_local_facts_dir | default('/etc/ansible/facts.d') }}"
+
 # Target docker user (running the Consul process/service).
 kwuxlab_docker_user: kwuxlab_dockerer
 
