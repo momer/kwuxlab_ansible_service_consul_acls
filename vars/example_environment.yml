@@ -1,0 +1,11 @@
+---
+# The Consul Master key/token to be used to configure ACLs for the cluster.
+consul_master_key: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# The Vault token, with access to the kv-v1 store, to be used to store
+# Consul ACLs.
+vault_master_token: "s.xxxxxxxxxxxxxxxxxxxxx"
+
+# A `local_`-namespaced variable (to avoid conflicts), with the value of the
+# primary vault datacenter, for access via Consul-configured DNS.
+local_vault_primary_datacenter: global
