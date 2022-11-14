@@ -1,6 +1,6 @@
 ---
-# The Consul Master key/token to be used to configure ACLs for the cluster.
-consul_master_key: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+# The Consul Master key/token to be used to bootstrap ACLs for the cluster.
+consul_master_key: "bc2b0299-e39d-43a2-aea8-1a5cc9684ec6"
 
 # The Vault token, with access to the kv-v1 store, to be used to store
 # Consul ACLs.
