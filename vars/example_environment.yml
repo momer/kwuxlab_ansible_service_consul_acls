@@ -2,7 +2,7 @@
 # The Consul Master key/token to be used to bootstrap ACLs for the cluster.
 #
 # Below is an example token; keep yours secret. Keep it safe.
-consul_master_key: "bc2b0299-e39d-43a2-aea8-1a5cc9684ec6"
+consul_master_key: "58b39ecd-614c-5094-a4ae-c4db5c08e496"
 
 # The Vault token, with access to the kv-v1 store, to be used to store
 # Consul ACLs.
