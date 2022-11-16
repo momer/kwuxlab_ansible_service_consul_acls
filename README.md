@@ -4,8 +4,7 @@ This playbook configures Consul ACLs, and stores details and configuration
 within a Vault instance.
 
 As such, it has a direct dependency (in this configuration) on a
-Hashicorp Vault installation, hence, it is decoupled from the kwuxlab playbook
-which handles the initial Consul installation/configuration.
+Hashicorp Vault installation.
 
 ## Requirements
 
@@ -25,29 +24,14 @@ which handles the initial Consul installation/configuration.
    1. Vault must be installed and bootstrapped on all primary datacenter
       server nodes.
    2. A Vault token with access to the `kv-v1` target namespace must be
-      generated. In a pinch, you can use a Vault master management token.
+      generated.
 
 ### Internal
 
 #### Playbook Variables
 
-Configure Consul ACL details as shown in `vars/example_environment.yml`.
-
-The playbook will look for a credential file in `vars/` that matches the ansible
-environment, *e.g.*:
-
-- `production_environment.yml`
-- `test_environment.yml`
-- etc.
-
-One way to secure these files is to encrypt them files with `ansible-vault`:
-
-```sh
-KWUXLAB_ENV="production"; ansible-vault encrypt \
-  --vault-id password_file."${KWUXLAB_ENV}".txt \
-  playbooks/kwuxlab_ansible_service_consul_acls/vars/"${KWUXLAB_ENV}"_environment.yml
-```
-
-Which requires that `password_file."${KWUXLAB_ENV}".txt`
-(read: `password_file.production.txt` in the above example) exists in your
-current directory.
+1. `consul_master_key`: Consul ACL token used to generate node agent tokens, etc.
+2. `vault_master_token`: Vault token with access to the `kv-v1` store, used to
+   store Consul ACLs.
+3. `target_vault_primary_datacenter`: The Consul datacenter where Vault has been
+   installed, initialized, and unsealed (on all nodes).
